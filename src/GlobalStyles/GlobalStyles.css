@@ -1,0 +1,35 @@
+.textLight {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.subTitleLight {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.title {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #333333;
+  margin: 0px;
+}
+
+.textContent {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: #333333;
+  margin: 0px;
+}

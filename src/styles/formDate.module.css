@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #d0d5dd;
+}

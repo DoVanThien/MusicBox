@@ -1,0 +1,25 @@
+.form {
+  width: 456px;
+  height: 80px;
+  margin: 0;
+}
+
+.select {
+  width: 456px;
+  height: 46px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #d0d5dd;
+}
+
+.selectTime {
+  width: 220px;
+  height: 46px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #d0d5dd;
+}
+
+select:invalid {
+  color: #6a6a6a;
+}

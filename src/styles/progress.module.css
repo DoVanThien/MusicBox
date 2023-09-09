@@ -1,0 +1,28 @@
+.steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 44px 40px;
+  border-radius: 4px;
+  background-color: #f9fafb;
+  padding: 24px 40px;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.lineContainer {
+  padding: 12px 0px;
+  height: 24px;
+  width: 56px;
+}
+
+.line {
+  width: 56px;
+  border: 1px solid #d0d5dd;
+}
