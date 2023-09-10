@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 40px;
 }
@@ -14,11 +15,65 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 48px;
 }
 
 .containerButton {
-  width: 100%;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 32px;
+}
+
+.solidLine {
+  width: 960px;
+  border: 1px solid #d0d5dd;
+}
+
+.dashedLine {
+  width: 960px;
+  border: 1px dashed #d0d5dd;
+}
+
+.containerResult {
+  margin-top: 32px;
+}
+
+.results {
+  margin-bottom: 32px;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.textResutl {
+  width: 596px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggests {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.roomItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
 }

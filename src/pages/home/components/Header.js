@@ -11,11 +11,9 @@ const Header = () => {
         <p className="title" style={{ margin: 0 }}>
           Đặt chỗ trực tuyến
         </p>
-        <SecondButton>
-          <p className="textLight" style={{ color: "#7932ED", margin: 0 }}>
-            Tra cứu đặt chỗ
-          </p>
-        </SecondButton>
+        <div style={{ width: "183px" }}>
+          <SecondButton>Tra cứu đặt chỗ</SecondButton>
+        </div>
       </div>
       <Progress />
     </GlobalStyles>

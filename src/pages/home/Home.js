@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import FirstStep from "./components/FirstStep/FirstStep";
 import Header from "../home/components/Header";
-import SecondStep from "../home/components/SecondStep";
-import ThirdStep from "../home/components/ThirdStep";
+import SecondStep from "../home/components/SecondStep/SecondStep";
+import ThirdStep from "../home/components/ThirdStep/ThirdStep";
 import GlobalStyles from "../../GlobalStyles";
 
 import styles from "../../styles/home.module.css";

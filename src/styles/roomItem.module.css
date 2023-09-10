@@ -1,0 +1,44 @@
+.roomItem {
+  display: flex;
+  padding: 16px 24px;
+  align-items: center;
+  gap: 32px;
+  align-self: stretch;
+
+  padding: 16px 24px;
+  border-radius: 8px;
+  background: var(--sub-bg-suggest, #f5f5f5);
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  flex: 1 0 0;
+}
+
+.info {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.times {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 400px;
+}
+
+.time {
+  display: flex;
+  padding: 8px 16px;
+  align-items: flex-start;
+  gap: 10px;
+
+  border-radius: 4px;
+  background: var(--sub-input-border, #d0d5dd);
+}

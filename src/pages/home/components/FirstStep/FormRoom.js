@@ -3,6 +3,7 @@ import Icons from "../../../../constants/Icons";
 import { Rooms } from "../../../../datas/rooms";
 import GlobalStyles from "../../../../GlobalStyles";
 import stylesForm from "../../../../styles/form.module.css";
+import styles from "../../../../styles/formDate.module.css";
 import Colors from "../../../../constants/Colors";
 
 export const FormRoom = () => {
@@ -25,8 +26,8 @@ export const FormRoom = () => {
   };
   return (
     <GlobalStyles>
-      <div className={stylesForm.form}>
-        <form>
+      <div className={stylesForm.formContainer}>
+        <form className={stylesForm.form}>
           <p
             htmlFor="room-select"
             className="textLight"

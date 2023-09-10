@@ -4,6 +4,7 @@ import { Times } from "../../../../datas/times";
 import { Periods } from "../../../../datas/periods";
 import GlobalStyles from "../../../../GlobalStyles";
 import stylesForm from "../../../../styles/form.module.css";
+import styles from "../../../../styles/formDate.module.css";
 import Colors from "../../../../constants/Colors";
 
 export const FormTime = () => {
@@ -22,7 +23,6 @@ export const FormTime = () => {
     setSelectedTime(selectedTime);
     setTime(selectedTime.time);
     console.log(selectedTime);
-    // console.log("____");
   };
 
   const handleChangePeriod = (event) => {
@@ -35,12 +35,12 @@ export const FormTime = () => {
   };
   return (
     <GlobalStyles>
-      <div className={stylesForm.form}>
+      <div className={stylesForm.formContainer}>
         <form>
           <p
             htmlFor="time-select"
             className="textLight"
-            style={{ color: `${Colors.black}` }}
+            style={{ color: `${Colors.black}`, marginBottom: 8 }}
           >
             Chọn giờ
           </p>

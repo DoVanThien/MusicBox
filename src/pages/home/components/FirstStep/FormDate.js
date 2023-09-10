@@ -35,34 +35,36 @@ export default function FormDate() {
 
   return (
     <GlobalStyles>
-      <div className={stylesForm.form}>
-        <p className="textLight" style={{ color: `${Colors.black}` }}>
-          Chọn ngày
-        </p>
-        <div className={styles.form}>
-          {formattedDate === undefined ? (
-            <p
-              className="textContent"
-              style={{ color: `${Colors.darkGray}` }}
-              onClick={handleClick}
-            >
-              Hôm nay
-            </p>
-          ) : (
-            <p className="textContent" onClick={handleClick}>
-              {formattedDate}
-            </p>
-          )}
-          {/* <p className="textContent" style={{ color: `${Colors.darkGray}` }}>
+      <div className={stylesForm.formContainer}>
+        <div className={stylesForm.form}>
+          <p className="textLight" style={{ color: `${Colors.black}` }}>
+            Chọn ngày
+          </p>
+          <div className={styles.form}>
+            {formattedDate === undefined ? (
+              <p
+                className="textContent"
+                style={{ color: `${Colors.darkGray}` }}
+                onClick={handleClick}
+              >
+                Hôm nay
+              </p>
+            ) : (
+              <p className="textContent" onClick={handleClick}>
+                {formattedDate}
+              </p>
+            )}
+            {/* <p className="textContent" style={{ color: `${Colors.darkGray}` }}>
             {formattedDate === undefined ? "Hôm nay" : `${formattedDate}`}
           </p> */}
-          <img src={Icons.calendar} onClick={handleClick} />
-        </div>
-        {showCalendar && (
-          <div>
-            <Calendar date={date} onChange={onChange} />
+            <img src={Icons.calendar} onClick={handleClick} />
           </div>
-        )}
+          {showCalendar && (
+            <div className={styles.calendar}>
+              <Calendar date={date} onChange={onChange} />
+            </div>
+          )}
+        </div>
       </div>
     </GlobalStyles>
   );

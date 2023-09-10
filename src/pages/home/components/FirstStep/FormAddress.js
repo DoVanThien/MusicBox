@@ -5,7 +5,7 @@ import { Addresses } from "../../../../datas/addresses";
 import GlobalStyles from "../../../../GlobalStyles";
 import stylesForm from "../../../../styles/form.module.css";
 
-export const FormAddress = () => {
+export const FormAddress = ({ setSelectedAddressId }) => {
   const [selectedAddress, setSelectedAddress] = useState({});
   const [nameBranch, setNameBranch] = useState("");
   const [phoneBranch, setPhoneBranch] = useState("");
@@ -24,12 +24,12 @@ export const FormAddress = () => {
     setNameBranch(selectedAddress.name);
     setPhoneBranch(selectedAddress.phone);
     setAddress(selectedAddress.address);
+    setSelectedAddressId(selectedId);
     console.log(selectedAddress);
-    console.log("____");
   };
   return (
     <GlobalStyles>
-      <div className={stylesForm.form}>
+      <div className={stylesForm.formContainer}>
         <form className={stylesForm.form}>
           <p
             htmlFor="address-select"

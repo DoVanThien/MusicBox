@@ -10,19 +10,27 @@ export default function SecondButton(props) {
     <button
       onClick={handleClick}
       style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        maxWidth: "183px",
+        width: "100%",
         height: "50px",
         borderRadius: "8px",
         border: "1px solid #7932ed",
-        // padding: "12px 24px",
-        gap: "10px",
         backgroundColor: "#ffffff",
       }}
     >
-      {props.children}
+      <p
+        style={{
+          color: "#7932ED",
+
+          fontFamily: "Inter",
+          fontSize: "18px",
+          fontStyle: "normal",
+          fontWeight: "500",
+          lineHeight: "26px",
+          margin: 0,
+        }}
+      >
+        {props.children}
+      </p>
     </button>
   );
 }

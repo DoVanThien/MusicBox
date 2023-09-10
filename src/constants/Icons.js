@@ -13,6 +13,12 @@ const money = require("../assets/icons/money.png");
 const time = require("../assets/icons/time.png");
 const zalo = require("../assets/icons/zalo.png");
 const mess = require("../assets/icons/mess.png");
+const notFound = require("../assets/icons/notFound.png");
+const phone = require("../assets/icons/phone.png");
+const capcha = require("../assets/icons/capcha.png");
+const success = require("../assets/icons/success.png");
+const person = require("../assets/icons/person.png");
+const email = require("../assets/icons/email.png");
 
 const Icons = {
   call,
@@ -30,5 +36,11 @@ const Icons = {
   mic,
   zalo,
   mess,
+  notFound,
+  phone,
+  capcha,
+  success,
+  person,
+  email,
 };
 export default Icons;
