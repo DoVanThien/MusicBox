@@ -21,6 +21,7 @@ const FirstStep = () => {
     if (selectedAddressId === 1) {
       setNotFound(true);
     } else {
+      setNotFound(false);
       setSuggest(true);
     }
   };
@@ -74,7 +75,7 @@ const FirstStep = () => {
         </div>
       )}
 
-      {!suggest && (
+      {suggest && (
         <div className={styles.containerResult}>
           <div className={styles.results}>
             <p className="textNoti">Kết quả tìm kiếm</p>

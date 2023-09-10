@@ -19,6 +19,7 @@ const capcha = require("../assets/icons/capcha.png");
 const success = require("../assets/icons/success.png");
 const person = require("../assets/icons/person.png");
 const email = require("../assets/icons/email.png");
+const cancel = require("../assets/icons/cancel.png");
 
 const Icons = {
   call,
@@ -42,5 +43,6 @@ const Icons = {
   success,
   person,
   email,
+  cancel,
 };
 export default Icons;

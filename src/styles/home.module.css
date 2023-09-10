@@ -5,16 +5,18 @@
 }
 
 .leftSide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  flex: 0.4;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../assets/image.jpg");
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 768px;
+  background-color: #fff;
+  z-index: 1;
 }
 
 .musicBox {
@@ -22,8 +24,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* width: 632px;
-    height: 550px; */
+  margin-top: 245px;
   margin-left: 68px;
   margin-right: 68px;
   padding: 40px 32px 32px 32px;
@@ -69,9 +70,9 @@
 }
 
 .rightSide {
-  width: 100%;
-  height: 100%;
-  flex: 0.6;
+  margin-left: 768px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .container {
