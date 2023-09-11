@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-import Button from "../Button";
 import GlobalStyles from "../../../../GlobalStyles";
 import Icons from "../../../../constants/Icons";
 import styleForm from "../../../../styles/secondStep.module.css";
 import styles from "../../../../styles/thirdStep.module.css";
 import SecondButton from "../SecondButton";
+import ModalCancel from "../ModalCancel";
 
 const ThirdStep = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const {
     name,
@@ -22,9 +21,14 @@ const ThirdStep = () => {
     clientEmail,
     clientPhone,
   } = location.state ?? {};
+  const [modalCancelIsOpen, setModalCancelIsOpen] = useState(false);
 
-  const handleSubmit = () => {
-    navigate("/order");
+  const openModal = () => {
+    setModalCancelIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalCancelIsOpen(false);
   };
 
   return (
@@ -32,7 +36,7 @@ const ThirdStep = () => {
       <div className={styles.container}>
         <div className={styles.successContainer}>
           <div style={{ width: 125, height: 125 }}>
-            <img scr={Icons.success} />
+            <img src={Icons.success} alt="Image" />
           </div>
           <div className={styles.texts}>
             <p className="subTitleDark">Bạn đã đặt bàn thành công!</p>
@@ -48,21 +52,21 @@ const ThirdStep = () => {
               <p className="textNoti">Thông tin đặt chỗ</p>
               <div className={styleForm.infos}>
                 <div className={styleForm.info}>
-                  <img src={Icons.location} />
+                  <img src={Icons.location} alt="Image" />
                   <p className="textDark">
                     {name}: {address}
                   </p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.phone} />
+                  <img src={Icons.phone} alt="Image" />
                   <p className="textDark">{phone}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.mic} />
+                  <img src={Icons.mic} alt="Image" />
                   <p className="textDark">{type}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.calendar} />
+                  <img src={Icons.calendar} alt="Image" />
                   <p className="textDark">{selectedTime}</p>
                 </div>
               </div>
@@ -71,15 +75,15 @@ const ThirdStep = () => {
               <p className="textNoti">Thông tin liên lạc</p>
               <div className={styleForm.infos}>
                 <div className={styleForm.info}>
-                  <img src={Icons.person} />
+                  <img src={Icons.person} alt="Image" />
                   <p className="textDark">{clientName}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.email} />
+                  <img src={Icons.email} alt="Image" />
                   <p className="textDark">{clientEmail}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.phone} />
+                  <img src={Icons.phone} alt="Image" />
                   <p className="textDark">{clientPhone}</p>
                 </div>
               </div>
@@ -89,9 +93,10 @@ const ThirdStep = () => {
           <div className={styles.line}></div>
 
           <div className={styles.button}>
-            <SecondButton onClick={handleSubmit}>Huỷ đặt bàn</SecondButton>
+            <SecondButton onClick={openModal}>Huỷ đặt bàn</SecondButton>
           </div>
         </div>
+        <ModalCancel isOpen={modalCancelIsOpen} closeModal={closeModal} />
       </div>
     </GlobalStyles>
   );

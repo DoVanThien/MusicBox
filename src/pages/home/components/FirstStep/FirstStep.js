@@ -19,6 +19,7 @@ const FirstStep = () => {
   const [selectedAddressId, setSelectedAddressId] = useState(null);
   const handleSubmit = () => {
     if (selectedAddressId === 1) {
+      setSuggest(false);
       setNotFound(true);
     } else {
       setNotFound(false);

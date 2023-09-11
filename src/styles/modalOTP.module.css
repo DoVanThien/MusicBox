@@ -1,12 +1,9 @@
 .container {
-  display: inline-flex;
-  padding: 48px 64px;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
-
-  border-radius: 8px;
-  background: var(--pimary-btn-fff, #fff);
+  padding: 28px 44px;
 }
 
 .subContainer {
@@ -24,6 +21,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: 120%;
+  margin: 0px;
 }
 
 .text {
@@ -35,6 +33,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 26px;
+  margin: 0px;
 }
 
 .field {
@@ -71,19 +70,26 @@
 }
 
 .input {
-  display: flex;
   padding: 10px 12px;
-  align-items: center;
   gap: 16px;
   flex: 1 0 0;
-
   border-radius: 4px;
   border: 1px solid var(--sub-input-border, #d0d5dd);
   background: var(--pimary-btn-fff, #fff);
+
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
 }
 
 .cancel {
   position: absolute;
   right: 16px;
   top: 16px;
+}
+
+.button {
+  width: 100%;
 }

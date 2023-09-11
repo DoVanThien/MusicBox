@@ -13,44 +13,47 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+
+    width: 460,
+    height: 461,
+    borderRadius: 8,
+    background: "#fff",
   },
 };
 
-export default function ModalOTP(isOpen) {
+export default function ModalOTP({ isOpen, closeModal, navigate }) {
   return (
-    <Modal
-      isOpen={isOpen}
-      onAfterOpen={afterOpenModal}
-      onRequestClose={closeModal}
-      style={customStyles}
-    >
-      <div style={styles.container}>
-        <div style={styles.subContainer}>
-          <p style={styles.title}>Tra cứu thông tin đặt chỗ</p>
-          <p style={styles.text}>
-            Mã xác nhận đã được gửi đến số điện thoại: {}
-          </p>
-          <div style={styles.field}>
-            <p style={styles.label}>
-              Mã xác nhận <span style={styles.star}>*</span>
+    <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
+      <div className={styles.container}>
+        <div className={styles.subContainer}>
+          <p className={styles.title}>Tra cứu thông tin đặt chỗ</p>
+          <div>
+            <p className={styles.text}>
+              Mã xác nhận đã được gửi đến số điện thoại:
+            </p>
+            <p className={styles.text}>123</p>
+          </div>
+          <div className={styles.field}>
+            <p className={styles.label}>
+              Mã xác nhận <span className={styles.star}>*</span>
             </p>
 
-            <div style={styles.inputs}>
-              <input type="number" style={styles.input} />
-              <input type="number" style={styles.input} />
-              <input type="number" style={styles.input} />
-              <input type="number" style={styles.input} />
+            <div className={styles.inputs}>
+              <input type="number" className={styles.input} />
+              <input type="number" className={styles.input} />
+              <input type="number" className={styles.input} />
+              <input type="number" className={styles.input} />
             </div>
           </div>
 
-          <div style={styles.button}>
-            <Button>Xác nhận</Button>
+          <div className={styles.button}>
+            <Button onClick={navigate}>Xác nhận</Button>
           </div>
 
-          <p style={styles.text}>Nếu không nhận được mã, thử lại sau 20s</p>
+          <p className={styles.text}>Nếu không nhận được mã, thử lại sau 20s</p>
 
-          <div style={styles.cancel}>
-            <img src={Icons.cancel} />
+          <div className={styles.cancel}>
+            <img src={Icons.cancel} onClick={closeModal} alt="Image" />
           </div>
         </div>
       </div>
