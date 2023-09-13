@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
+import { useStorage } from "../../../storage/StorageContext";
 import Button from "./Button";
-
 import styles from "../../../styles/modalSearch.module.css";
 import Icons from "../../../constants/Icons";
 
@@ -21,7 +21,31 @@ const customStyles = {
   },
 };
 
-export default function ModalSearch({ isOpen, closeModal, openModal }) {
+export default function ModalSearch({
+  isOpen,
+  closeModal,
+  openModal,
+  onMatchFound,
+}) {
+  const [enteredPhone, setEnteredPhone] = useState("");
+  const { storage } = useStorage();
+
+  const handlePhoneSearch = () => {
+    let matchedData = null;
+
+    for (const phone in storage) {
+      if (storage[phone].clientPhone === enteredPhone) {
+        matchedData = storage[phone];
+        break;
+      }
+    }
+
+    if (matchedData) {
+      onMatchFound(matchedData);
+      openModal();
+    }
+  };
+
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
       <div className={styles.container}>
@@ -35,11 +59,13 @@ export default function ModalSearch({ isOpen, closeModal, openModal }) {
               type="number"
               placeholder="Nhập số điện thoại đặt bàn"
               className={styles.input}
+              value={enteredPhone}
+              onChange={(e) => setEnteredPhone(e.target.value)}
             />
           </div>
         </div>
         <div className={styles.button}>
-          <Button onClick={openModal}>Xác nhận</Button>
+          <Button onClick={handlePhoneSearch}>Xác nhận</Button>
         </div>
         <div className={styles.cancel}>
           <img src={Icons.cancel} alt="Cancel" onClick={closeModal} />

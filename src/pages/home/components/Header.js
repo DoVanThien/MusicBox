@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import GlobalStyles from "../../../GlobalStyles";
-import SecondButton from "./SecondButton";
 import ModalSearch from "./ModalSearch";
 import ModalOTP from "./ModalOTP";
+import { useNavigate } from "react-router-dom";
 import Progress from "./Progress";
+import SecondButton from "./SecondButton";
+import GlobalStyles from "../../../GlobalStyles";
 import styles from "../../../styles/header.module.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const [modalSearchIsOpen, setModalSearchIsOpen] = useState(false);
   const [modalOTPIsOpen, setModalOTPIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const [matchedData, setMatchedData] = useState(null);
 
   const openSearchModal = () => {
     setModalSearchIsOpen(true);
@@ -31,8 +32,13 @@ const Header = () => {
   };
 
   const navigateToThird = () => {
-    navigate("/third");
+    navigate("/order", { state: { matchedData } });
     setModalOTPIsOpen(false);
+  };
+
+  const onMatchFound = (data) => {
+    setMatchedData(data);
+    console.log("header", data);
   };
 
   return (
@@ -48,11 +54,13 @@ const Header = () => {
         isOpen={modalSearchIsOpen}
         closeModal={closeSearchModal}
         openModal={openOTPModal}
+        onMatchFound={onMatchFound}
       />
       <ModalOTP
         isOpen={modalOTPIsOpen}
         closeModal={closeOTPModal}
         navigate={navigateToThird}
+        matchedData={matchedData}
       />
     </GlobalStyles>
   );

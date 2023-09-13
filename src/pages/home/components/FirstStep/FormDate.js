@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Calendar } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -9,14 +9,10 @@ import GlobalStyles from "../../../../GlobalStyles";
 import stylesForm from "../../../../styles/form.module.css";
 import styles from "../../../../styles/formDate.module.css";
 
-export default function FormDate() {
+export const FormDate = ({ setSelectedDate }) => {
   const [date, setDate] = useState(new Date());
   const [formattedDate, setFormattedDate] = useState();
   const [showCalendar, setShowCalendar] = useState(false);
-
-  useEffect(() => {
-    console.log(formattedDate);
-  }, [date, formattedDate]);
 
   const formatDate = (date) => {
     return format(date, "dd/MM/yyyy");
@@ -31,6 +27,9 @@ export default function FormDate() {
     setShowCalendar(false);
     const formattedDatee = formatDate(date);
     setFormattedDate(formattedDatee);
+    const formattedDateMonthDay = formattedDatee.slice(0, 5);
+    setSelectedDate(formattedDateMonthDay);
+    console.log(formattedDateMonthDay);
   };
 
   return (
@@ -57,7 +56,7 @@ export default function FormDate() {
             {/* <p className="textContent" style={{ color: `${Colors.darkGray}` }}>
             {formattedDate === undefined ? "Hôm nay" : `${formattedDate}`}
           </p> */}
-            <img src={Icons.calendar} onClick={handleClick} />
+            <img alt="Icon" src={Icons.calendar} onClick={handleClick} />
           </div>
           {showCalendar && (
             <div className={styles.calendar}>
@@ -68,4 +67,4 @@ export default function FormDate() {
       </div>
     </GlobalStyles>
   );
-}
+};

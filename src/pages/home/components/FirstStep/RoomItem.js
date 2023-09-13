@@ -4,13 +4,31 @@ import Icons from "../../../../constants/Icons";
 import styles from "../../../../styles/roomItem.module.css";
 import ShowMap from "../SecondStep/Map";
 
-export default function RoomItem({ name, address, phone, type, price, times }) {
+export default function RoomItem({
+  name,
+  address,
+  phone,
+  type,
+  price,
+  times,
+  selectedPeriod,
+  selectedDate,
+}) {
   const [showMap, setShowMap] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const handleClick = (selectedTime) => {
     navigate("/second", {
-      state: { name, address, phone, type, price, selectedTime },
+      state: {
+        name,
+        address,
+        phone,
+        type,
+        price,
+        selectedTime,
+        selectedPeriod,
+        selectedDate,
+      },
     });
   };
 
@@ -21,7 +39,7 @@ export default function RoomItem({ name, address, phone, type, price, times }) {
           <p className="subTitleDark">{name}</p>
         </div>
         <div className={styles.info}>
-          <img src={Icons.location} />
+          <img alt="Icon" src={Icons.location} />
           <p
             className="textContent"
             onMouseOver={() => setShowMap(true)}
@@ -32,11 +50,11 @@ export default function RoomItem({ name, address, phone, type, price, times }) {
           {showMap && <ShowMap />}
         </div>
         <div className={styles.info}>
-          <img src={Icons.mic} />
+          <img alt="Icon" src={Icons.mic} />
           <p className="textContent">{type}</p>
         </div>
         <div className={styles.info}>
-          <img src={Icons.money} />
+          <img alt="Icon" src={Icons.money} />
           <p className="textContent">{price}</p>
         </div>
       </div>

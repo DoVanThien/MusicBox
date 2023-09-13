@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Icons from "../../../../constants/Icons";
 import { Rooms } from "../../../../datas/rooms";
 import GlobalStyles from "../../../../GlobalStyles";
 import stylesForm from "../../../../styles/form.module.css";
-import styles from "../../../../styles/formDate.module.css";
 import Colors from "../../../../constants/Colors";
 
 export const FormRoom = () => {

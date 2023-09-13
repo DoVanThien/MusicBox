@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+import { useStorage } from "../../../../storage/StorageContext";
 import TimeCountDown from "./TimeCountDown";
 import Button from "../Button";
 import SecondButton from "../SecondButton";
@@ -12,8 +13,17 @@ import Colors from "../../../../constants/Colors";
 const SecondStep = ({ selectedRoom }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { name, address, phone, type, price, selectedTime } =
-    location.state ?? {};
+  const storage = useStorage();
+  const {
+    name,
+    address,
+    phone,
+    type,
+    price,
+    selectedTime,
+    selectedPeriod,
+    selectedDate,
+  } = location.state ?? {};
   const [clientName, setClientName] = useState("");
   const [checkClientName, setCheckClientName] = useState(true);
   const [clientPhone, setClientPhone] = useState("");
@@ -53,7 +63,6 @@ const SecondStep = ({ selectedRoom }) => {
       setErrorEmail(null);
     }
     setClientEmail(e.target.value);
-    // setCheckClientEmail(true);
   };
 
   const handleChangeCapcha = (e) => {
@@ -64,13 +73,6 @@ const SecondStep = ({ selectedRoom }) => {
   const handleClick = () => {
     navigate("/");
   };
-
-  useEffect(() => {
-    if (capcha === "944531") {
-      setCheckCapcha(true);
-      console.log("capcha");
-    }
-  }, [capcha]);
 
   const handleSubmit = () => {
     if (!clientName) {
@@ -95,6 +97,21 @@ const SecondStep = ({ selectedRoom }) => {
       checkClientEmail &&
       checkCapcha
     ) {
+      const data = {
+        name,
+        address,
+        phone,
+        type,
+        price,
+        selectedTime,
+        selectedPeriod,
+        selectedDate,
+        clientName,
+        clientEmail,
+        clientPhone,
+      };
+      storage.addDataToStorage(clientPhone, data);
+
       navigate("/third", {
         state: {
           name,
@@ -103,6 +120,8 @@ const SecondStep = ({ selectedRoom }) => {
           type,
           price,
           selectedTime,
+          selectedPeriod,
+          selectedDate,
           clientName,
           clientEmail,
           clientPhone,
@@ -115,6 +134,17 @@ const SecondStep = ({ selectedRoom }) => {
     checkClientPhone,
     checkClientEmail,
     checkCapcha,
+    name,
+    address,
+    phone,
+    type,
+    price,
+    selectedTime,
+    selectedPeriod,
+    selectedDate,
+    clientName,
+    clientEmail,
+    clientPhone,
   ]);
 
   return (
@@ -124,22 +154,30 @@ const SecondStep = ({ selectedRoom }) => {
         <div className={styles.orderInfo}>
           <div className={styles.infos}>
             <div className={styles.info}>
-              <img src={Icons.location} />
+              <img alt="Icon" src={Icons.location} />
               <p className="textDark">
                 {name}: {address}
               </p>
             </div>
             <div className={styles.info}>
-              <img src={Icons.phone} />
+              <img alt="Icon" src={Icons.phone} />
               <p className="textDark">{phone}</p>
             </div>
             <div className={styles.info}>
-              <img src={Icons.mic} />
+              <img alt="Icon" src={Icons.mic} />
               <p className="textDark">{type}</p>
             </div>
             <div className={styles.info}>
-              <img src={Icons.calendar} />
-              <p className="textDark">{selectedTime}</p>
+              <div className={styles.time}>
+                <img alt="Icon" src={Icons.calendar} />
+                <p className="textDark">{selectedDate}</p>
+              </div>
+              <div className={styles.time}>
+                <img alt="Icon" src={Icons.time} />
+                <p className="textDark">
+                  {selectedTime} - {selectedPeriod}
+                </p>
+              </div>
             </div>
           </div>
           <div className={styles.timerBox}>
@@ -237,7 +275,7 @@ const SecondStep = ({ selectedRoom }) => {
                 </p>
               </div>
               <div className={styles.inputCapcha}>
-                <img src={Icons.capcha} />
+                <img alt="Icon" src={Icons.capcha} />
                 <div
                   className={styles.input}
                   style={{

@@ -6,7 +6,7 @@ import GlobalStyles from "../../../../GlobalStyles";
 import stylesForm from "../../../../styles/form.module.css";
 import Colors from "../../../../constants/Colors";
 
-export const FormTime = () => {
+export const FormTime = ({ setSelectedPeriodValue }) => {
   const [isOpenTime, setIsOpenTime] = useState(false);
   const [isOpenPeriod, setIsOpenPeriod] = useState(false);
 
@@ -38,6 +38,7 @@ export const FormTime = () => {
     const selectedPeriod = Periods.find((period) => period.id === selectedId);
     setSelectedPeriod(selectedPeriod);
     setPeriod(selectedPeriod.period);
+    setSelectedPeriodValue(selectedPeriod.period);
     toggleDropdownPeriod();
     setSelectedOptionPeriod(selectedPeriod.period);
     console.log(selectedPeriod);

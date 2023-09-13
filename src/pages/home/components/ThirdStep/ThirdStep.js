@@ -15,8 +15,9 @@ const ThirdStep = () => {
     address,
     phone,
     type,
-    price,
     selectedTime,
+    selectedPeriod,
+    selectedDate,
     clientName,
     clientEmail,
     clientPhone,
@@ -36,7 +37,7 @@ const ThirdStep = () => {
       <div className={styles.container}>
         <div className={styles.successContainer}>
           <div style={{ width: 125, height: 125 }}>
-            <img src={Icons.success} alt="Image" />
+            <img src={Icons.success} alt="Icon" />
           </div>
           <div className={styles.texts}>
             <p className="subTitleDark">Bạn đã đặt bàn thành công!</p>
@@ -52,22 +53,30 @@ const ThirdStep = () => {
               <p className="textNoti">Thông tin đặt chỗ</p>
               <div className={styleForm.infos}>
                 <div className={styleForm.info}>
-                  <img src={Icons.location} alt="Image" />
+                  <img src={Icons.location} alt="Icon" />
                   <p className="textDark">
                     {name}: {address}
                   </p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.phone} alt="Image" />
+                  <img src={Icons.phone} alt="Icon" />
                   <p className="textDark">{phone}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.mic} alt="Image" />
+                  <img src={Icons.mic} alt="Icon" />
                   <p className="textDark">{type}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.calendar} alt="Image" />
-                  <p className="textDark">{selectedTime}</p>
+                  <div className={styleForm.info}>
+                    <img src={Icons.calendar} alt="Icon" />
+                    <p className="textDark">{selectedDate}</p>
+                  </div>
+                  <div className={styleForm.info}>
+                    <img src={Icons.time} alt="Icon" />
+                    <p className="textDark">
+                      {selectedTime} - {selectedPeriod}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -75,15 +84,15 @@ const ThirdStep = () => {
               <p className="textNoti">Thông tin liên lạc</p>
               <div className={styleForm.infos}>
                 <div className={styleForm.info}>
-                  <img src={Icons.person} alt="Image" />
+                  <img src={Icons.person} alt="Icon" />
                   <p className="textDark">{clientName}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.email} alt="Image" />
+                  <img src={Icons.email} alt="Icon" />
                   <p className="textDark">{clientEmail}</p>
                 </div>
                 <div className={styleForm.info}>
-                  <img src={Icons.phone} alt="Image" />
+                  <img src={Icons.phone} alt="Icon" />
                   <p className="textDark">{clientPhone}</p>
                 </div>
               </div>

@@ -7,15 +7,19 @@ export function useStorage() {
 }
 
 export function StorageProvider({ children }) {
-  const [storage, setStorage] = useState(new Set());
+  const [storage, setStorage] = useState({});
 
-  const addDataToStorage = (data) => {
-    setStorage(new Set([...storage, data]));
+  const addDataToStorage = (phone, data) => {
+    setStorage({ ...storage, [phone]: data });
   };
 
-  const deleteDataFromStorage = (data) => {
-    const updatedStorage = new Set([...storage]);
-    updatedStorage.delete(data);
+  const getDataFromStorage = (phone) => {
+    return storage[phone];
+  };
+
+  const deleteDataFromStorage = (phone) => {
+    const updatedStorage = { ...storage };
+    delete updatedStorage[phone];
     setStorage(updatedStorage);
   };
 
@@ -24,6 +28,7 @@ export function StorageProvider({ children }) {
       value={{
         storage,
         addDataToStorage,
+        getDataFromStorage,
         deleteDataFromStorage,
       }}
     >

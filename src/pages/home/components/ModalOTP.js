@@ -1,7 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
 import Button from "./Button";
-
 import styles from "../../../styles/modalOTP.module.css";
 import Icons from "../../../constants/Icons";
 
@@ -21,7 +20,13 @@ const customStyles = {
   },
 };
 
-export default function ModalOTP({ isOpen, closeModal, navigate }) {
+export default function ModalOTP({
+  isOpen,
+  closeModal,
+  navigate,
+  matchedData,
+}) {
+  console.log("OTP", matchedData);
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
       <div className={styles.container}>
@@ -37,7 +42,6 @@ export default function ModalOTP({ isOpen, closeModal, navigate }) {
             <p className={styles.label}>
               Mã xác nhận <span className={styles.star}>*</span>
             </p>
-
             <div className={styles.inputs}>
               <input type="number" className={styles.input} />
               <input type="number" className={styles.input} />
@@ -45,15 +49,12 @@ export default function ModalOTP({ isOpen, closeModal, navigate }) {
               <input type="number" className={styles.input} />
             </div>
           </div>
-
           <div className={styles.button}>
             <Button onClick={navigate}>Xác nhận</Button>
           </div>
-
           <p className={styles.text}>Nếu không nhận được mã, thử lại sau 20s</p>
-
           <div className={styles.cancel}>
-            <img src={Icons.cancel} onClick={closeModal} alt="Image" />
+            <img src={Icons.cancel} onClick={closeModal} alt="Icon" />
           </div>
         </div>
       </div>
