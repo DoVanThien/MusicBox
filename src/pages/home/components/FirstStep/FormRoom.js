@@ -7,27 +7,32 @@ import styles from "../../../../styles/formDate.module.css";
 import Colors from "../../../../constants/Colors";
 
 export const FormRoom = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState({});
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  useEffect(() => {
-    console.log(type, price);
-  }, [type, price]);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-  const handleChange = (event) => {
-    const selectedId = parseInt(event.target.value, 10);
+  const handleOptionSelect = (selectedId) => {
     const selectedRoom = Rooms.find((room) => room.id === selectedId);
     setSelectedRoom(selectedRoom);
     setType(selectedRoom.type);
     setPrice(selectedRoom.price);
+    toggleDropdown();
+    setSelectedOption({
+      type: selectedRoom.type,
+      price: selectedRoom.price,
+    });
     console.log(selectedRoom);
-    console.log("____");
   };
   return (
     <GlobalStyles>
       <div className={stylesForm.formContainer}>
-        <form className={stylesForm.form}>
+        <div className={stylesForm.form}>
           <p
             htmlFor="room-select"
             className="textLight"
@@ -35,41 +40,61 @@ export const FormRoom = () => {
           >
             Chọn phòng
           </p>
-          <select
-            required
-            id="room-select"
-            className={stylesForm.select}
-            onChange={handleChange}
-            style={{
-              minWidth: 360,
-              overFlow: "hidden",
-              whiteSpace: "nowrap",
-              textOverflow: "ellipsis",
-            }}
-          >
-            <option value="" disabled selected hidden>
-              <p
-                className="textContent"
-                style={{ color: `${Colors.darkGray}` }}
-              >
-                Chọn phòng
-              </p>
-            </option>
-            {Rooms.map((room) => (
-              <option key={room.id} value={room.id}>
-                <div>
-                  <img src={Icons.mic} />
-                  <p className="textContent">{room.type}</p>
-                </div>
 
-                <div>
-                  <img src={Icons.money} />
-                  <p className="textContent">{room.price}</p>
-                </div>
-              </option>
-            ))}
-          </select>
-        </form>
+          <div
+            className={stylesForm.dropdownContainer}
+            onClick={toggleDropdown}
+          >
+            <div className={stylesForm.dropdownHeaderContainer}>
+              <div className={stylesForm.dropdownHeader}>
+                {selectedOption ? (
+                  <div className={stylesForm.dropdownValue}>
+                    {selectedOption.type} - {selectedOption.price}
+                  </div>
+                ) : (
+                  "Chọn phòng"
+                )}
+              </div>
+              <img
+                src={isOpen ? Icons.arrowUp : Icons.arrowDown}
+                alt="Dropdown Arrow"
+              />
+            </div>
+
+            {isOpen && (
+              <div
+                className={stylesForm.dropdownListContainer}
+                style={{ zIndex: 1 }}
+              >
+                <ul className={stylesForm.dropdownList}>
+                  {Rooms.map((room) => (
+                    <li
+                      key={room.id}
+                      onClick={() => handleOptionSelect(room.id)}
+                    >
+                      <div className={stylesForm.dropdownItems}>
+                        <div className={stylesForm.dropdownItem}>
+                          <img src={Icons.mic} alt="Mic Icon" />
+                          <p className="textContent">{room.type}</p>
+                        </div>
+
+                        <div className={stylesForm.dropdownItem}>
+                          <img src={Icons.money} alt="Money Icon" />
+                          <p className="textContent">{room.price}</p>
+                        </div>
+                      </div>
+                      {selectedOption &&
+                        selectedOption.type === room.type &&
+                        selectedOption.price === room.price && (
+                          <img src={Icons.checkIcon} alt="Check Icon" />
+                        )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </GlobalStyles>
   );

@@ -20,6 +20,9 @@ const success = require("../assets/icons/success.png");
 const person = require("../assets/icons/person.png");
 const email = require("../assets/icons/email.png");
 const cancel = require("../assets/icons/cancel.png");
+const arrowUp = require("../assets/icons/arrowUp.png");
+const arrowDown = require("../assets/icons/arrowDown.png");
+const checkIcon = require("../assets/icons/checkIcon.png");
 
 const Icons = {
   call,
@@ -44,5 +47,8 @@ const Icons = {
   person,
   email,
   cancel,
+  arrowUp,
+  arrowDown,
+  checkIcon,
 };
 export default Icons;

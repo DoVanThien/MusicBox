@@ -10,6 +10,110 @@
   gap: 8px;
 }
 
+.dropdownsContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.dropdownContainer {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownHeaderContainer {
+  display: flex;
+  padding: 10px 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  align-self: stretch;
+  border: 1px solid var(--sub-input-border, #d0d5dd);
+  border-radius: 4px;
+  background: var(--pimary-btn-fff, #fff);
+  cursor: pointer;
+}
+
+.dropdownListContainer {
+  position: absolute;
+  top: 100%;
+
+  width: 100%;
+  border-radius: 0px 0px 8px 8px;
+  background: var(--pimary-btn-fff, #fff);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+.dropdownHeader {
+  color: var(--sub-text, #6a6a6a);
+
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0px;
+}
+
+.dropdownValue {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 392px;
+
+  color: var(--pimary-main-text, #333);
+
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px; /* 144.444% */
+}
+
+.dropdownList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdownList li {
+  padding: 16px;
+  cursor: pointer;
+
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  align-self: stretch;
+  border-bottom: 1px solid var(--sub-input-border, #d0d5dd);
+}
+
+.dropdownList li:hover {
+  background-color: #f9fafb;
+}
+
+.dropdownItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1 0 0;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+
+/* ///////
+
+//// */
 .select {
   width: 456px;
   height: 46px;
@@ -28,4 +132,46 @@
 
 select:invalid {
   color: #6a6a6a;
+}
+
+/* form.module.css */
+
+/* Styles for the custom select container */
+.customSelectContainer {
+  position: relative;
+}
+
+/* Styles for the custom dropdown */
+.customSelect {
+  display: none; /* Initially hide the custom dropdown */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 150px; /* Adjust the max-height as needed */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 1;
+}
+
+/* Styles for the custom dropdown options */
+.customOption {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+
+  /* Define the styles for the option text */
+  color: #333;
+  font-size: 14px;
+}
+
+/* Highlight the selected option */
+.customOption.active {
+  background-color: #f0f0f0;
+}
+
+/* Show the custom dropdown when it's active */
+.select:focus + .customSelect {
+  display: block;
 }

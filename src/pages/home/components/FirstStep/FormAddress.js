@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Icons from "../../../../constants/Icons";
 import Colors from "../../../../constants/Colors";
 import { Addresses } from "../../../../datas/addresses";
@@ -6,17 +6,18 @@ import GlobalStyles from "../../../../GlobalStyles";
 import stylesForm from "../../../../styles/form.module.css";
 
 export const FormAddress = ({ setSelectedAddressId }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState({});
   const [nameBranch, setNameBranch] = useState("");
   const [phoneBranch, setPhoneBranch] = useState("");
   const [address, setAddress] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  useEffect(() => {
-    console.log(nameBranch, phoneBranch, address);
-  }, [nameBranch, phoneBranch, address]);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-  const handleChange = (event) => {
-    const selectedId = parseInt(event.target.value, 10);
+  const handleOptionSelect = (selectedId) => {
     const selectedAddress = Addresses.find(
       (address) => address.id === selectedId
     );
@@ -25,51 +26,69 @@ export const FormAddress = ({ setSelectedAddressId }) => {
     setPhoneBranch(selectedAddress.phone);
     setAddress(selectedAddress.address);
     setSelectedAddressId(selectedId);
+    toggleDropdown();
+    setSelectedOption({
+      name: selectedAddress.name,
+      address: selectedAddress.address,
+    });
     console.log(selectedAddress);
   };
+
   return (
     <GlobalStyles>
       <div className={stylesForm.formContainer}>
-        <form className={stylesForm.form}>
-          <p
-            htmlFor="address-select"
-            className="textLight"
-            style={{ color: `${Colors.black}` }}
-          >
+        <div className={stylesForm.form}>
+          <p className="textLight" style={{ color: `${Colors.black}` }}>
             Chọn cơ sở
           </p>
-          <select
-            required
-            className={stylesForm.select}
-            id="address-select"
-            onChange={handleChange}
-            style={{
-              minWidth: 360,
-              overFlow: "hidden",
-              whiteSpace: "nowrap",
-              textOverflow: "ellipsis",
-            }}
+
+          <div
+            className={stylesForm.dropdownContainer}
+            onClick={toggleDropdown}
           >
-            <option value="" disabled selected hidden>
-              <p
-                className="textContent"
-                style={{ color: `${Colors.darkGray}` }}
-              >
-                Chọn cơ sở
-              </p>
-            </option>
-            {Addresses.map((address) => (
-              <option key={address.id} value={address.id}>
-                <img src={Icons.location} />
-                <div>
-                  <p className="textContent">
-                    {address.name} : {address.phone}. {address.address}
-                  </p>
-                </div>
-              </option>
-            ))}
-          </select>
-        </form>
+            <div className={stylesForm.dropdownHeaderContainer}>
+              <div className={stylesForm.dropdownHeader}>
+                {selectedOption ? (
+                  <div className={stylesForm.dropdownValue}>
+                    {selectedOption.name} - {selectedOption.address}
+                  </div>
+                ) : (
+                  "Chọn cơ sở"
+                )}
+              </div>
+              <img
+                src={isOpen ? Icons.arrowUp : Icons.arrowDown}
+                alt="Dropdown Arrow"
+              />
+            </div>
+
+            {isOpen && (
+              <div className={stylesForm.dropdownListContainer}>
+                <ul className={stylesForm.dropdownList}>
+                  {Addresses.map((address) => (
+                    <li
+                      key={address.id}
+                      onClick={() => handleOptionSelect(address.id)}
+                    >
+                      <img src={Icons.location} alt="Location Icon" />
+                      <div>
+                        <p className="textContent">
+                          {address.name} : {address.phone}. {address.address}
+                        </p>
+                      </div>
+                      <div style={{ width: 30 }}>
+                        {selectedOption &&
+                          selectedOption.name === address.name && (
+                            <img src={Icons.checkIcon} alt="Check Icon" />
+                          )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </GlobalStyles>
   );
