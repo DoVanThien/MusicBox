@@ -15,6 +15,11 @@ const Header = () => {
   const [modalSearchIsOpen, setModalSearchIsOpen] = useState(false);
   const [modalOTPIsOpen, setModalOTPIsOpen] = useState(false);
   const [matchedData, setMatchedData] = useState(null);
+  const [enteredPhone, setEnteredPhone] = useState("");
+
+  const handlePhoneChange = (value) => {
+    setEnteredPhone(value);
+  };
 
   const openSearchModal = () => {
     setModalSearchIsOpen(true);
@@ -60,12 +65,15 @@ const Header = () => {
           closeModal={closeSearchModal}
           openModal={openOTPModal}
           onMatchFound={onMatchFound}
+          enteredPhone={enteredPhone}
+          onPhoneChange={handlePhoneChange}
         />
         <ModalOTP
           isOpen={modalOTPIsOpen}
           closeModal={closeOTPModal}
           navigate={navigateToThird}
           matchedData={matchedData}
+          enteredPhone={enteredPhone}
         />
       </MediaQuery>
 
@@ -95,12 +103,15 @@ const Header = () => {
           closeModal={closeSearchModal}
           openModal={openOTPModal}
           onMatchFound={onMatchFound}
+          enteredPhone={enteredPhone}
+          onPhoneChange={handlePhoneChange}
         />
         <ModalOTP
           isOpen={modalOTPIsOpen}
           closeModal={closeOTPModal}
           navigate={navigateToThird}
           matchedData={matchedData}
+          enteredPhone={enteredPhone}
         />
       </MediaQuery>
     </GlobalStyles>

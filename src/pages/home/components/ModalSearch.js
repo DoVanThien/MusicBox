@@ -44,8 +44,10 @@ export default function ModalSearch({
   closeModal,
   openModal,
   onMatchFound,
+  enteredPhone,
+  onPhoneChange,
 }) {
-  const [enteredPhone, setEnteredPhone] = useState("");
+  // const [enteredPhone, setEnteredPhone] = useState("");
   const { storage } = useStorage();
 
   const handlePhoneSearch = () => {
@@ -62,6 +64,11 @@ export default function ModalSearch({
       onMatchFound(matchedData);
       openModal();
     }
+  };
+
+  const handlePhoneInputChange = (e) => {
+    const value = e.target.value;
+    onPhoneChange(value);
   };
 
   return (
@@ -84,7 +91,7 @@ export default function ModalSearch({
                   placeholder="Nhập số điện thoại đặt bàn"
                   className={styles.input}
                   value={enteredPhone}
-                  onChange={(e) => setEnteredPhone(e.target.value)}
+                  onChange={handlePhoneInputChange}
                 />
               </div>
             </div>
@@ -116,7 +123,7 @@ export default function ModalSearch({
                   placeholder="Nhập số điện thoại đặt bàn"
                   className={styles.input}
                   value={enteredPhone}
-                  onChange={(e) => setEnteredPhone(e.target.value)}
+                  onChange={handlePhoneInputChange}
                 />
               </div>
             </div>

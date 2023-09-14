@@ -44,6 +44,7 @@ export default function ModalOTP({
   closeModal,
   navigate,
   matchedData,
+  enteredPhone,
 }) {
   return (
     <>
@@ -60,7 +61,7 @@ export default function ModalOTP({
                 <p className={styles.text}>
                   Mã xác nhận đã được gửi đến số điện thoại:
                 </p>
-                <p className={styles.text}>123</p>
+                <p className={styles.text}>{enteredPhone}</p>
               </div>
               <div className={styles.field}>
                 <p className={styles.label}>
@@ -100,7 +101,7 @@ export default function ModalOTP({
                 <div style={{ textAlign: "center" }}>
                   <p className={styles.text}>
                     Mã xác nhận đã được gửi đến số điện thoại:&nbsp;
-                    <span className={styles.text}>123</span>
+                    <span className={styles.text}>{enteredPhone}</span>
                   </p>
                 </div>
                 <div className={styles.field}>
