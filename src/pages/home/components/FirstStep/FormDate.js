@@ -3,6 +3,8 @@ import { Calendar } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
+import MediaQuery from "react-responsive";
+
 import Icons from "../../../../constants/Icons";
 import Colors from "../../../../constants/Colors";
 import GlobalStyles from "../../../../GlobalStyles";
@@ -36,10 +38,11 @@ export const FormDate = ({ setSelectedDate }) => {
     <GlobalStyles>
       <div className={stylesForm.formContainer}>
         <div className={stylesForm.form}>
-          <p className="textLight" style={{ color: `${Colors.black}` }}>
-            Chọn ngày
-          </p>
-          <div className={styles.form}>
+          <p className="textDark">Chọn ngày</p>
+          <div
+            className={styles.form}
+            style={showCalendar ? { borderColor: "#7932ED" } : {}}
+          >
             {formattedDate === undefined ? (
               <p
                 className="textContent"
@@ -53,9 +56,6 @@ export const FormDate = ({ setSelectedDate }) => {
                 {formattedDate}
               </p>
             )}
-            {/* <p className="textContent" style={{ color: `${Colors.darkGray}` }}>
-            {formattedDate === undefined ? "Hôm nay" : `${formattedDate}`}
-          </p> */}
             <img alt="Icon" src={Icons.calendar} onClick={handleClick} />
           </div>
           {showCalendar && (

@@ -1,95 +1,203 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  padding: 28px 44px;
+@media only screen and (min-width: 1224px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 44px;
+  }
+
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .title {
+    color: #333;
+
+    font-family: "Inter";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0px;
+  }
+
+  .text {
+    color: #333;
+    text-align: center;
+
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 0px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+  }
+
+  .label {
+    color: #333;
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px; /* 144.444% */
+  }
+
+  .star {
+    color: #ed3237;
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+
+  .inputs {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+  }
+
+  .input {
+    padding: 10px 12px;
+    gap: 16px;
+    flex: 1 0 0;
+    border-radius: 4px;
+    border: 1px solid #d0d5dd;
+    background: #fff;
+
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+  }
+
+  .cancel {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+  }
+
+  .button {
+    width: 100%;
+  }
 }
 
-.subContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
+@media only screen and (max-width: 375px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 28px;
+  }
 
-.title {
-  color: var(--pimary-main-text, #333);
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
 
-  font-family: Inter;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-  margin: 0px;
-}
+  .title {
+    color: #333;
 
-.text {
-  color: var(--pimary-main-text, #333);
-  text-align: center;
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 0px;
+  }
 
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
-  margin: 0px;
-}
+  .textField {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  align-self: stretch;
-}
+  .text {
+    color: #333;
+    text-align: center;
 
-.label {
-  color: var(--pimary-main-text, #333);
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px; /* 144.444% */
-}
+    font-family: "Inter";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0px;
+  }
 
-.star {
-  color: var(--highlight-red, #ed3237);
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
+  .field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+  }
 
-.inputs {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  align-self: stretch;
-}
+  .label {
+    color: #333;
+    font-family: "Inter";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
 
-.input {
-  padding: 10px 12px;
-  gap: 16px;
-  flex: 1 0 0;
-  border-radius: 4px;
-  border: 1px solid var(--sub-input-border, #d0d5dd);
-  background: var(--pimary-btn-fff, #fff);
+  .star {
+    color: #ed3237;
+    font-family: "Inter";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
 
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
-}
+  .inputs {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+  }
 
-.cancel {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-}
+  .input {
+    padding: 10px 12px;
+    gap: 16px;
+    flex: 1 0 0;
+    border-radius: 4px;
+    border: 1px solid #d0d5dd;
+    background: #fff;
 
-.button {
-  width: 100%;
+    font-family: "Inter";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .cancel {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+
+  .button {
+    width: 279px;
+    height: 49px;
+  }
 }

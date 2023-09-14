@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import MediaQuery from "react-responsive";
+
 import Icons from "../../../../constants/Icons";
 import Colors from "../../../../constants/Colors";
 import { Addresses } from "../../../../datas/addresses";
@@ -36,60 +38,131 @@ export const FormAddress = ({ setSelectedAddressId }) => {
 
   return (
     <GlobalStyles>
-      <div className={stylesForm.formContainer}>
-        <div className={stylesForm.form}>
-          <p className="textLight" style={{ color: `${Colors.black}` }}>
-            Chọn cơ sở
-          </p>
+      <MediaQuery minWidth={1224}>
+        <div className={stylesForm.formContainer}>
+          <div className={stylesForm.form}>
+            <p className="textDark">Chọn cơ sở</p>
 
-          <div
-            className={stylesForm.dropdownContainer}
-            onClick={toggleDropdown}
-          >
-            <div className={stylesForm.dropdownHeaderContainer}>
-              <div className={stylesForm.dropdownHeader}>
-                {selectedOption ? (
-                  <div className={stylesForm.dropdownValue}>
-                    {selectedOption.name} - {selectedOption.address}
-                  </div>
-                ) : (
-                  "Chọn cơ sở"
-                )}
+            <div
+              className={stylesForm.dropdownContainer}
+              onClick={toggleDropdown}
+            >
+              <div
+                className={stylesForm.dropdownHeaderContainer}
+                style={isOpen ? { borderColor: "#7932ED" } : {}}
+              >
+                <div className={stylesForm.dropdownHeader}>
+                  {selectedOption ? (
+                    <div className={stylesForm.dropdownValue}>
+                      {selectedOption.name} - {selectedOption.address}
+                    </div>
+                  ) : (
+                    "Chọn cơ sở"
+                  )}
+                </div>
+                <img
+                  src={isOpen ? Icons.arrowUp : Icons.arrowDown}
+                  alt="Dropdown Arrow"
+                />
               </div>
-              <img
-                src={isOpen ? Icons.arrowUp : Icons.arrowDown}
-                alt="Dropdown Arrow"
-              />
+
+              {isOpen && (
+                <div className={stylesForm.dropdownListContainer}>
+                  <ul className={stylesForm.dropdownList}>
+                    {Addresses.map((address) => (
+                      <li
+                        key={address.id}
+                        onClick={() => handleOptionSelect(address.id)}
+                        style={
+                          selectedOption && selectedOption.name === address.name
+                            ? { background: "#F9FAFB" }
+                            : {}
+                        }
+                      >
+                        <img src={Icons.location} alt="Location Icon" />
+                        <div>
+                          <p className="textContent">
+                            {address.name} : {address.phone}. {address.address}
+                          </p>
+                        </div>
+                        <div style={{ width: 30 }}>
+                          {selectedOption &&
+                            selectedOption.name === address.name && (
+                              <img src={Icons.checkIcon} alt="Check Icon" />
+                            )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-
-            {isOpen && (
-              <div className={stylesForm.dropdownListContainer}>
-                <ul className={stylesForm.dropdownList}>
-                  {Addresses.map((address) => (
-                    <li
-                      key={address.id}
-                      onClick={() => handleOptionSelect(address.id)}
-                    >
-                      <img src={Icons.location} alt="Location Icon" />
-                      <div>
-                        <p className="textContent">
-                          {address.name} : {address.phone}. {address.address}
-                        </p>
-                      </div>
-                      <div style={{ width: 30 }}>
-                        {selectedOption &&
-                          selectedOption.name === address.name && (
-                            <img src={Icons.checkIcon} alt="Check Icon" />
-                          )}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
         </div>
-      </div>
+      </MediaQuery>
+
+      <MediaQuery maxWidth={375}>
+        <div className={stylesForm.formContainer}>
+          <div className={stylesForm.form}>
+            <p className="textDark">Chọn cơ sở</p>
+
+            <div
+              className={stylesForm.dropdownContainer}
+              onClick={toggleDropdown}
+            >
+              <div
+                className={stylesForm.dropdownHeaderContainer}
+                style={isOpen ? { borderColor: "#7932ED" } : {}}
+              >
+                <div className={stylesForm.dropdownHeader}>
+                  {selectedOption ? (
+                    <div className={stylesForm.dropdownValue}>
+                      {selectedOption.name} - {selectedOption.address}
+                    </div>
+                  ) : (
+                    "Chọn cơ sở"
+                  )}
+                </div>
+                <img
+                  src={isOpen ? Icons.arrowUp : Icons.arrowDown}
+                  alt="Dropdown Arrow"
+                />
+              </div>
+
+              {isOpen && (
+                <div className={stylesForm.dropdownListContainer}>
+                  <ul className={stylesForm.dropdownList}>
+                    {Addresses.map((address) => (
+                      <li
+                        key={address.id}
+                        onClick={() => handleOptionSelect(address.id)}
+                        style={
+                          selectedOption && selectedOption.name === address.name
+                            ? { background: "#F9FAFB" }
+                            : {}
+                        }
+                      >
+                        <img src={Icons.location} alt="Location Icon" />
+                        <div>
+                          <p className="textContent">
+                            {address.name} : {address.phone}. {address.address}
+                          </p>
+                        </div>
+                        <div style={{ width: 30 }}>
+                          {selectedOption &&
+                            selectedOption.name === address.name && (
+                              <img src={Icons.checkIcon} alt="Check Icon" />
+                            )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </MediaQuery>
     </GlobalStyles>
   );
 };

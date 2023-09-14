@@ -1,52 +1,110 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  padding: 28px 44px;
+@media only screen and (min-width: 1224px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 44px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .title {
+    color: #333;
+
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0px;
+  }
+
+  .question {
+    align-self: stretch;
+    color: #333;
+    text-align: center;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 0px;
+    max-width: 320px;
+  }
+
+  .button {
+    display: flex;
+    width: 318px;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .cancel {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+  }
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
+@media only screen and (max-width: 375px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 28px;
+  }
 
-.title {
-  color: var(--pimary-main-text, #333);
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
 
-  font-family: Inter;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-  margin: 0px;
-}
+  .title {
+    color: #333;
 
-.question {
-  align-self: stretch;
-  color: var(--pimary-main-text, #333);
-  text-align: center;
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 0px;
+  }
 
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
-  margin: 0px;
-  max-width: 320px;
-}
+  .question {
+    align-self: stretch;
+    color: #333;
+    text-align: center;
 
-.button {
-  display: flex;
-  width: 318px;
-  align-items: flex-start;
-  gap: 16px;
-}
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0px;
+    max-width: 279px;
+  }
 
-.cancel {
-  position: absolute;
-  right: 16px;
-  top: 16px;
+  .button {
+    display: flex;
+    width: 279px;
+    height: 44px;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .cancel {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
 }

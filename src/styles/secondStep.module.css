@@ -1,132 +1,281 @@
-.orderInfos {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  align-self: stretch;
-  margin-bottom: 40px;
+@media only screen and (min-width: 1224px) {
+  .orderInfos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    margin-bottom: 40px;
+  }
+
+  .orderInfo {
+    display: flex;
+    padding: 16px 24px;
+    align-items: center;
+    gap: 40px;
+    align-self: stretch;
+
+    border-radius: 8px;
+    background: #f9fafb;
+  }
+
+  .timerBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .redTime {
+    color: #ed3237;
+
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .lightTime {
+    color: #f5f5f5;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1 0 0;
+  }
+
+  .info {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+  }
+
+  .time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .inputBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+  }
+
+  .inputRow {
+    display: flex;
+    align-items: start;
+    gap: 48px;
+    align-self: stretch;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1 0 0;
+    width: 456px;
+  }
+
+  .label {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .input {
+    width: 432px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid #d0d5dd;
+  }
+
+  input {
+    border: 0px;
+    width: 100%;
+  }
+
+  .inputCapcha {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+  }
+
+  .capcha {
+    width: 100%;
+    height: 100%;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .button {
+    width: 200px;
+  }
 }
 
-.orderInfo {
-  display: flex;
-  padding: 16px 24px;
-  align-items: center;
-  gap: 40px;
-  align-self: stretch;
+@media only screen and (max-width: 375px) {
+  .orderInfos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    margin-bottom: 24px;
+  }
 
-  border-radius: 8px;
-  background: var(--sub-bg-hover, #f9fafb);
-}
+  .orderInfo {
+    display: flex;
+    padding: 16px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
 
-.infos {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  flex: 1 0 0;
-}
+    border-radius: 8px;
+    background: #f9fafb;
+  }
 
-.info {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  align-self: stretch;
-}
+  .dashedLine {
+    width: 319px;
+    border: 1px dashed #d0d5dd;
+  }
 
-.time {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-}
+  .timerBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
 
-.timerBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
+  .redTime {
+    color: #ed3237;
 
-.redTime {
-  color: #ed3237;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+  }
 
-  font-family: Inter;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-}
+  .lightTime {
+    color: #f5f5f5;
 
-.lightTime {
-  color: var(--sub-bg-suggest, #f5f5f5);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
 
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-}
+  .infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1 0 0;
+  }
 
-.inputBox {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  align-self: stretch;
-}
+  .info {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+  }
 
-.inputRow {
-  display: flex;
-  align-items: start;
-  gap: 48px;
-  align-self: stretch;
-}
+  .time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
 
-.inputs {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  flex: 1 0 0;
-  width: 456px;
-}
+  .inputBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+  }
 
-.label {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+  }
 
-.input {
-  width: 432px;
-  padding: 10px 12px;
-  border-radius: 4px;
-  border: 1px solid #d0d5dd;
-}
+  .label {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
 
-input {
-  border: 0px;
-  width: 100%;
-}
+  .input {
+    width: 319px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid #d0d5dd;
+  }
 
-.inputCapcha {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  align-self: stretch;
-}
+  input {
+    border: 0px;
+    width: 100%;
+  }
 
-.capcha {
-  width: 100%;
-  height: 100%;
-}
+  .inputCapcha {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+  }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-}
+  .capcha {
+    width: 100%;
+    height: 100%;
+  }
 
-.button {
-  width: 200px;
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    padding-bottom: 32px;
+  }
+
+  .button {
+    width: 149px;
+    height: 44px;
+  }
+
+  .textButton {
+    color: #f5f5f5;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
 }

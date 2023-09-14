@@ -1,43 +1,86 @@
-.container {
-  width: 1920px;
-  height: 1040px;
-  flex-shrink: 0;
+@media only screen and (min-width: 1224px) {
+  .container {
+    width: 1024px;
+    height: 1040px;
+    padding: 0px 448px;
+    flex-shrink: 0;
 
-  background: url("../assets/image.jpg"), lightgray 50% / cover no-repeat;
+    background: url("../assets/image.jpg"), lightgray 50% / cover no-repeat;
+  }
+
+  .content {
+    display: flex;
+    width: 896px;
+    height: 912px;
+    padding: 64px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    flex-shrink: 0;
+
+    background: #fff;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+  }
+
+  .body {
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+
+    border-radius: 8px;
+    background: #f9fafb;
+  }
+
+  .line {
+    width: 896px;
+    border: 1px dashed #d0d5dd;
+  }
 }
 
-.content {
-  display: flex;
-  width: 896px;
-  height: 1040px;
-  padding: 64px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 48px;
-  flex-shrink: 0;
+@media only screen and (max-width: 375px) {
+  .content {
+    display: flex;
+    width: 375px;
+    padding: 32px 16px 285px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
 
-  background: var(--pimary-btn-fff, #fff);
-  position: absolute;
-  left: 488px;
-}
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+  }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  align-self: stretch;
-}
+  .body {
+    display: flex;
+    padding: 16px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
 
-.body {
-  display: flex;
-  padding: 24px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 24px;
-  align-self: stretch;
+    border-radius: 8px;
+    background: #f9fafb;
+  }
 
-  border-radius: 8px;
-  background: var(--sub-bg-hover, #f9fafb);
+  .line {
+    width: 319px;
+    border: 1px dashed #d0d5dd;
+  }
 }

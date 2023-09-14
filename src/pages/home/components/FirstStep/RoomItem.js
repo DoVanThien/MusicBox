@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import MediaQuery from "react-responsive";
+
 import Icons from "../../../../constants/Icons";
 import styles from "../../../../styles/roomItem.module.css";
 import ShowMap from "../SecondStep/Map";
+import GlobalStyles from "../../../../GlobalStyles";
 
 export default function RoomItem({
   name,
@@ -33,45 +36,92 @@ export default function RoomItem({
   };
 
   return (
-    <div className={styles.roomItem}>
-      <div className={styles.infos}>
-        <div className={styles.name}>
-          <p className="subTitleDark">{name}</p>
-        </div>
-        <div className={styles.info}>
-          <img alt="Icon" src={Icons.location} />
-          <p
-            className="textContent"
-            onMouseOver={() => setShowMap(true)}
-            onMouseLeave={() => setShowMap(false)}
-          >
-            {address}
-          </p>
-          {showMap && <ShowMap />}
-        </div>
-        <div className={styles.info}>
-          <img alt="Icon" src={Icons.mic} />
-          <p className="textContent">{type}</p>
-        </div>
-        <div className={styles.info}>
-          <img alt="Icon" src={Icons.money} />
-          <p className="textContent">{price}</p>
-        </div>
-      </div>
-
-      <div className={styles.times}>
-        {times.map((time, key) => {
-          return (
-            <div
-              className={styles.time}
-              key={key}
-              onClick={() => handleClick(time)}
-            >
-              <p className="textDark">{time}</p>
+    <GlobalStyles>
+      <MediaQuery minWidth={1224}>
+        <div className={styles.roomItem}>
+          <div className={styles.infos}>
+            <div className={styles.name}>
+              <p className="subTitleDark">{name}</p>
             </div>
-          );
-        })}
-      </div>
-    </div>
+            <div className={styles.info}>
+              <img alt="Icon" src={Icons.location} />
+              <p
+                className="textContent"
+                onMouseOver={() => setShowMap(true)}
+                onMouseLeave={() => setShowMap(false)}
+              >
+                {address}
+              </p>
+              {showMap && <ShowMap />}
+            </div>
+            <div className={styles.info}>
+              <img alt="Icon" src={Icons.mic} />
+              <p className="textContent">{type}</p>
+            </div>
+            <div className={styles.info}>
+              <img alt="Icon" src={Icons.money} />
+              <p className="textContent">{price}</p>
+            </div>
+          </div>
+
+          <div className={styles.times}>
+            {times.map((time, key) => {
+              return (
+                <div
+                  className={styles.time}
+                  key={key}
+                  onClick={() => handleClick(time)}
+                >
+                  <p className="textDark">{time}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </MediaQuery>
+
+      <MediaQuery maxWidth={375}>
+        <div className={styles.roomItem}>
+          <div className={styles.infos}>
+            <div className={styles.name}>
+              <p className="subTitleDark">{name}</p>
+            </div>
+            <div className={styles.info}>
+              <img alt="Icon" src={Icons.location} />
+              <p
+                className="textContent"
+                onMouseOver={() => setShowMap(true)}
+                onMouseLeave={() => setShowMap(false)}
+              >
+                {address}
+              </p>
+              {showMap && <ShowMap />}
+            </div>
+            <div className={styles.info}>
+              <img alt="Icon" src={Icons.mic} />
+              <p className="textContent">{type}</p>
+            </div>
+            <div className={styles.info}>
+              <img alt="Icon" src={Icons.money} />
+              <p className="textContent">{price}</p>
+            </div>
+          </div>
+
+          <div className={styles.times}>
+            {times.map((time, key) => {
+              return (
+                <div
+                  className={styles.time}
+                  key={key}
+                  onClick={() => handleClick(time)}
+                >
+                  <p className="textDark">{time}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </MediaQuery>
+    </GlobalStyles>
   );
 }

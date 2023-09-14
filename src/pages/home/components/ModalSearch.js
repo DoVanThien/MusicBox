@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import MediaQuery from "react-responsive";
+
 import { useStorage } from "../../../storage/StorageContext";
 import Button from "./Button";
 import styles from "../../../styles/modalSearch.module.css";
 import Icons from "../../../constants/Icons";
 
-const customStyles = {
+const customStyleDesktop = {
   content: {
     top: "50%",
     left: "50%",
@@ -16,6 +18,22 @@ const customStyles = {
 
     width: 408,
     height: 291,
+    borderRadius: 8,
+    background: "#fff",
+  },
+};
+
+const customStyleMobile = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+
+    width: 303,
+    height: 250,
     borderRadius: 8,
     background: "#fff",
   },
@@ -47,30 +65,70 @@ export default function ModalSearch({
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <p className={styles.title}>Tra cứu thông tin đặt chỗ</p>
-          <div className={styles.field}>
-            <p className={styles.phone}>
-              Số điện thoại <span className={styles.star}>*</span>
-            </p>
-            <input
-              type="number"
-              placeholder="Nhập số điện thoại đặt bàn"
-              className={styles.input}
-              value={enteredPhone}
-              onChange={(e) => setEnteredPhone(e.target.value)}
-            />
+    <>
+      <MediaQuery minWidth={1224}>
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          style={customStyleDesktop}
+        >
+          <div className={styles.container}>
+            <div className={styles.content}>
+              <p className={styles.title}>Tra cứu thông tin đặt chỗ</p>
+              <div className={styles.field}>
+                <p className={styles.phone}>
+                  Số điện thoại <span className={styles.star}>*</span>
+                </p>
+                <input
+                  type="number"
+                  placeholder="Nhập số điện thoại đặt bàn"
+                  className={styles.input}
+                  value={enteredPhone}
+                  onChange={(e) => setEnteredPhone(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={styles.button}>
+              <Button onClick={handlePhoneSearch}>Xác nhận</Button>
+            </div>
+            <div className={styles.cancel}>
+              <img src={Icons.cancel} alt="Cancel" onClick={closeModal} />
+            </div>
           </div>
-        </div>
-        <div className={styles.button}>
-          <Button onClick={handlePhoneSearch}>Xác nhận</Button>
-        </div>
-        <div className={styles.cancel}>
-          <img src={Icons.cancel} alt="Cancel" onClick={closeModal} />
-        </div>
-      </div>
-    </Modal>
+        </Modal>
+      </MediaQuery>
+
+      <MediaQuery maxWidth={375}>
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          style={customStyleMobile}
+        >
+          <div className={styles.container}>
+            <div className={styles.content}>
+              <p className={styles.title}>Tra cứu thông tin đặt chỗ</p>
+              <div className={styles.field}>
+                <p className={styles.phone}>
+                  Số điện thoại <span className={styles.star}>*</span>
+                </p>
+                <input
+                  type="number"
+                  placeholder="Nhập số điện thoại đặt bàn"
+                  className={styles.input}
+                  value={enteredPhone}
+                  onChange={(e) => setEnteredPhone(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={styles.button}>
+              <Button onClick={handlePhoneSearch}>Xác nhận</Button>
+            </div>
+            <div className={styles.cancel}>
+              <img src={Icons.cancel} alt="Cancel" onClick={closeModal} />
+            </div>
+          </div>
+        </Modal>
+      </MediaQuery>
+    </>
   );
 }

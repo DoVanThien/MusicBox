@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import MediaQuery from "react-responsive";
 
 import { useStorage } from "../../../../storage/StorageContext";
 import TimeCountDown from "./TimeCountDown";
@@ -74,6 +75,13 @@ const SecondStep = ({ selectedRoom }) => {
     navigate("/");
   };
 
+  useEffect(() => {
+    if (capcha === "944531") {
+      setCheckCapcha(true);
+      console.log("capcha");
+    }
+  }, [capcha]);
+
   const handleSubmit = () => {
     if (!clientName) {
       setCheckClientName(false);
@@ -88,6 +96,13 @@ const SecondStep = ({ selectedRoom }) => {
       setCheckCapcha(false);
     }
     setSubmitted(true);
+    console.log(
+      submitted,
+      checkClientName,
+      checkClientPhone,
+      checkClientEmail,
+      checkCapcha
+    );
   };
   useEffect(() => {
     if (
@@ -149,51 +164,218 @@ const SecondStep = ({ selectedRoom }) => {
 
   return (
     <GlobalStyles>
-      <div className={styles.orderInfos}>
-        <p className="textNoti">Thông tin đặt chỗ</p>
-        <div className={styles.orderInfo}>
-          <div className={styles.infos}>
-            <div className={styles.info}>
-              <img alt="Icon" src={Icons.location} />
-              <p className="textDark">
-                {name}: {address}
-              </p>
-            </div>
-            <div className={styles.info}>
-              <img alt="Icon" src={Icons.phone} />
-              <p className="textDark">{phone}</p>
-            </div>
-            <div className={styles.info}>
-              <img alt="Icon" src={Icons.mic} />
-              <p className="textDark">{type}</p>
-            </div>
-            <div className={styles.info}>
-              <div className={styles.time}>
-                <img alt="Icon" src={Icons.calendar} />
-                <p className="textDark">{selectedDate}</p>
-              </div>
-              <div className={styles.time}>
-                <img alt="Icon" src={Icons.time} />
+      <MediaQuery minWidth={1224}>
+        <div className={styles.orderInfos}>
+          <p className="textNoti">Thông tin đặt chỗ</p>
+          <div className={styles.orderInfo}>
+            <div className={styles.infos}>
+              <div className={styles.info}>
+                <img alt="Icon" src={Icons.location} />
                 <p className="textDark">
-                  {selectedTime} - {selectedPeriod}
+                  {name}: {address}
                 </p>
               </div>
+              <div className={styles.info}>
+                <img alt="Icon" src={Icons.phone} />
+                <p className="textDark">{phone}</p>
+              </div>
+              <div className={styles.info}>
+                <img alt="Icon" src={Icons.mic} />
+                <p className="textDark">{type}</p>
+              </div>
+              <div className={styles.info}>
+                <div className={styles.time}>
+                  <img alt="Icon" src={Icons.calendar} />
+                  <p className="textDark">{selectedDate}</p>
+                </div>
+                <div className={styles.time}>
+                  <img alt="Icon" src={Icons.time} />
+                  <p className="textDark">
+                    {selectedTime} - {selectedPeriod}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className={styles.timerBox}>
-            <p className="tetContent">Thời gian còn lại</p>
-            <div className={styles.redTime}>
-              <TimeCountDown />
-              <span>s</span>
+            <div className={styles.timerBox}>
+              <p className="textContent">Thời gian còn lại</p>
+              <div className={styles.redTime}>
+                <TimeCountDown />
+                <span>s</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.orderInfos}>
-        <p className="textNoti">Thông tin liên lạc</p>
-        <div className={styles.inputBox}>
-          <div className={styles.inputRow}>
+        <div className={styles.orderInfos}>
+          <p className="textNoti">Thông tin liên lạc</p>
+          <div className={styles.inputBox}>
+            <div className={styles.inputRow}>
+              <div className={styles.inputs}>
+                <div className={styles.label}>
+                  <p className="textDark">Họ và tên</p>
+                  <p className="textDark" style={{ color: Colors.red }}>
+                    *
+                  </p>
+                </div>
+                <div
+                  className={styles.input}
+                  style={{
+                    borderColor: !checkClientName ? Colors.red : Colors.line,
+                  }}
+                >
+                  <input
+                    type="text"
+                    value={clientName}
+                    placeholder="Nhập họ và tên"
+                    onChange={handleChangeName}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.inputs}>
+                <div className={styles.label}>
+                  <p className="textDark">Số điện thoại </p>
+                  <p className="textDark" style={{ color: Colors.red }}>
+                    *
+                  </p>
+                </div>
+                <div
+                  className={styles.input}
+                  style={{
+                    borderColor: !checkClientPhone ? Colors.red : Colors.line,
+                  }}
+                >
+                  <input
+                    type="number"
+                    value={clientPhone}
+                    placeholder="Nhập số điện thoại"
+                    onChange={handleChangePhone}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.inputRow}>
+              <div className={styles.inputs}>
+                <div className={styles.label}>
+                  <p className="textDark">Email </p>
+                  <p className="textDark" style={{ color: Colors.red }}>
+                    *
+                  </p>
+                </div>
+                <div
+                  className={styles.input}
+                  style={{
+                    borderColor: !checkClientEmail ? Colors.red : Colors.line,
+                  }}
+                >
+                  <input
+                    type="email"
+                    value={clientEmail}
+                    placeholder="Nhập email"
+                    onChange={handleChangeEmail}
+                  />
+                </div>
+                {errorEmail && (
+                  <p style={{ color: Colors.red, position: "relative" }}>
+                    {errorEmail}
+                  </p>
+                )}
+              </div>
+
+              <div className={styles.inputs}>
+                <div className={styles.label}>
+                  <p className="textDark">Mã capcha </p>
+                  <p className="textDark" style={{ color: Colors.red }}>
+                    *
+                  </p>
+                </div>
+                <div className={styles.inputCapcha}>
+                  <img alt="Icon" src={Icons.capcha} />
+                  <div
+                    className={styles.input}
+                    style={{
+                      borderColor: !checkCapcha ? Colors.red : Colors.line,
+                    }}
+                  >
+                    <input
+                      type="number"
+                      value={capcha}
+                      onChange={handleChangeCapcha}
+                      placeholder="Nhập mã capcha bên trái"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.buttons}>
+          <div className={styles.button}>
+            <SecondButton onClick={handleClick}>Chọn bàn khác</SecondButton>
+          </div>
+          <div className={styles.button}>
+            <Button onClick={handleSubmit}>
+              <div>
+                Đặt bàn
+                <span className={styles.lightTime}>
+                  <span> (</span>
+                  <TimeCountDown />
+                  <span>s)</span>
+                </span>
+              </div>
+            </Button>
+          </div>
+        </div>
+      </MediaQuery>
+
+      <MediaQuery maxWidth={375}>
+        <div className={styles.orderInfos}>
+          <p className="textNoti">Thông tin đặt chỗ</p>
+          <div className={styles.orderInfo}>
+            <div className={styles.timerBox}>
+              <p className="textContent">Thời gian còn lại</p>
+              <div className={styles.redTime}>
+                <TimeCountDown />
+                <span>s</span>
+              </div>
+            </div>
+            <div className={styles.dashedLine}></div>
+            <div className={styles.infos}>
+              <div className={styles.info}>
+                <img alt="Icon" src={Icons.location} />
+                <p className="textDark">
+                  {name}: {address}
+                </p>
+              </div>
+              <div className={styles.info}>
+                <img alt="Icon" src={Icons.phone} />
+                <p className="textDark">{phone}</p>
+              </div>
+              <div className={styles.info}>
+                <img alt="Icon" src={Icons.mic} />
+                <p className="textDark">{type}</p>
+              </div>
+              <div className={styles.info}>
+                <div className={styles.time}>
+                  <img alt="Icon" src={Icons.calendar} />
+                  <p className="textDark">{selectedDate}</p>
+                </div>
+                <div className={styles.time}>
+                  <img alt="Icon" src={Icons.time} />
+                  <p className="textDark">
+                    {selectedTime} - {selectedPeriod}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.orderInfos}>
+          <p className="textNoti">Thông tin liên lạc</p>
+          <div className={styles.inputBox}>
             <div className={styles.inputs}>
               <div className={styles.label}>
                 <p className="textDark">Họ và tên</p>
@@ -237,9 +419,7 @@ const SecondStep = ({ selectedRoom }) => {
                 />
               </div>
             </div>
-          </div>
 
-          <div className={styles.inputRow}>
             <div className={styles.inputs}>
               <div className={styles.label}>
                 <p className="textDark">Email </p>
@@ -293,25 +473,25 @@ const SecondStep = ({ selectedRoom }) => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.buttons}>
-        <div className={styles.button}>
-          <SecondButton onClick={handleClick}>Chọn bàn khác</SecondButton>
+        <div className={styles.buttons}>
+          <div className={styles.button}>
+            <SecondButton onClick={handleClick}>Chọn bàn khác</SecondButton>
+          </div>
+          <div className={styles.button}>
+            <Button onClick={handleSubmit}>
+              <div className={styles.textButton}>
+                Đặt bàn
+                <span className={styles.textButton}>
+                  <span> (</span>
+                  <TimeCountDown />
+                  <span>s)</span>
+                </span>
+              </div>
+            </Button>
+          </div>
         </div>
-        <div className={styles.button}>
-          <Button onClick={handleSubmit}>
-            <div>
-              Đặt bàn
-              <span className={styles.lightTime}>
-                <span> (</span>
-                <TimeCountDown />
-                <span>s)</span>
-              </span>
-            </div>
-          </Button>
-        </div>
-      </div>
+      </MediaQuery>
     </GlobalStyles>
   );
 };

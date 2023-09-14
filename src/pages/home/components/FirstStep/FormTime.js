@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import MediaQuery from "react-responsive";
+
 import Icons from "../../../../constants/Icons";
 import { Times } from "../../../../datas/times";
 import { Periods } from "../../../../datas/periods";
@@ -46,101 +48,233 @@ export const FormTime = ({ setSelectedPeriodValue }) => {
 
   return (
     <GlobalStyles>
-      <div className={stylesForm.formContainer}>
-        <div className={stylesForm.form}>
-          <p className="textLight" style={{ color: `${Colors.black}` }}>
-            Chọn giờ
-          </p>
+      <MediaQuery minWidth={1224}>
+        <div className={stylesForm.formContainer}>
+          <div className={stylesForm.form}>
+            <p className="textDark">Chọn giờ</p>
 
-          <div className={stylesForm.dropdownsContainer}>
-            <div
-              className={stylesForm.dropdownContainer}
-              onClick={toggleDropdownTime}
-            >
-              <div className={stylesForm.dropdownHeaderContainer}>
-                <div className={stylesForm.dropdownHeader}>
-                  {selectedOptionTime ? (
-                    <div className={stylesForm.dropdownValue}>
-                      {selectedOptionTime}
-                    </div>
-                  ) : (
-                    "Giờ bắt đầu"
-                  )}
+            <div className={stylesForm.dropdownsContainer}>
+              <div
+                className={stylesForm.dropdownContainer}
+                onClick={toggleDropdownTime}
+              >
+                <div
+                  className={stylesForm.dropdownHeaderContainer}
+                  style={isOpenTime ? { borderColor: "#7932ED" } : {}}
+                >
+                  <div className={stylesForm.dropdownHeader}>
+                    {selectedOptionTime ? (
+                      <div className={stylesForm.dropdownValue}>
+                        {selectedOptionTime}
+                      </div>
+                    ) : (
+                      "Giờ bắt đầu"
+                    )}
+                  </div>
+                  <img src={Icons.time} alt="Time Icon" />
                 </div>
-                <img src={Icons.time} alt="Time Icon" />
+
+                {isOpenTime && (
+                  <div
+                    className={stylesForm.dropdownListContainer}
+                    style={{ maxHeight: 290, overflowY: "auto" }}
+                  >
+                    <ul className={stylesForm.dropdownList}>
+                      {Times.map((time) => (
+                        <li
+                          key={time.id}
+                          onClick={() => handleOptionSelectTime(time.id)}
+                          style={
+                            selectedOptionTime &&
+                            selectedOptionTime === time.time
+                              ? { background: "#F9FAFB" }
+                              : {}
+                          }
+                        >
+                          <div>
+                            <p className="textContent">{time.time}</p>
+                          </div>
+                          {selectedOptionTime === time.time && (
+                            <img src={Icons.checkIcon} alt="Check Icon" />
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
-              {isOpenTime && (
+              <div
+                className={stylesForm.dropdownContainer}
+                onClick={toggleDropdownPeriod}
+              >
                 <div
-                  className={stylesForm.dropdownListContainer}
-                  style={{ maxHeight: 290, overflowY: "auto" }}
+                  className={stylesForm.dropdownHeaderContainer}
+                  style={isOpenPeriod ? { borderColor: "#7932ED" } : {}}
                 >
-                  <ul className={stylesForm.dropdownList}>
-                    {Times.map((time) => (
-                      <li
-                        key={time.id}
-                        onClick={() => handleOptionSelectTime(time.id)}
-                      >
-                        <div>
-                          <p className="textContent">{time.time}</p>
-                        </div>
-                        {selectedOptionTime === time.time && (
-                          <img src={Icons.checkIcon} alt="Check Icon" />
-                        )}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className={stylesForm.dropdownHeader}>
+                    {selectedOptionPeriod ? (
+                      <div className={stylesForm.dropdownValue}>
+                        {selectedOptionPeriod}
+                      </div>
+                    ) : (
+                      "Thời gian"
+                    )}
+                  </div>
+                  <img
+                    src={isOpenPeriod ? Icons.arrowUp : Icons.arrowDown}
+                    alt="Dropdown Arrow"
+                  />
                 </div>
-              )}
-            </div>
 
-            <div
-              className={stylesForm.dropdownContainer}
-              onClick={toggleDropdownPeriod}
-            >
-              <div className={stylesForm.dropdownHeaderContainer}>
-                <div className={stylesForm.dropdownHeader}>
-                  {selectedOptionPeriod ? (
-                    <div className={stylesForm.dropdownValue}>
-                      {selectedOptionPeriod}
-                    </div>
-                  ) : (
-                    "Thời gian"
-                  )}
-                </div>
-                <img
-                  src={isOpenPeriod ? Icons.arrowUp : Icons.arrowDown}
-                  alt="Dropdown Arrow"
-                />
+                {isOpenPeriod && (
+                  <div
+                    className={stylesForm.dropdownListContainer}
+                    style={{ maxHeight: 290, overflowY: "auto" }}
+                  >
+                    <ul className={stylesForm.dropdownList}>
+                      {Periods.map((period) => (
+                        <li
+                          key={period.id}
+                          onClick={() => handleOptionSelectPeriod(period.id)}
+                          style={
+                            selectedOptionPeriod &&
+                            selectedOptionPeriod === period.period
+                              ? { background: "#F9FAFB" }
+                              : {}
+                          }
+                        >
+                          <div>
+                            <p className="textContent">{period.period}</p>
+                          </div>
+
+                          {selectedOptionPeriod === period.period && (
+                            <img src={Icons.checkIcon} alt="Check Icon" />
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
-
-              {isOpenPeriod && (
-                <div
-                  className={stylesForm.dropdownListContainer}
-                  style={{ maxHeight: 290, overflowY: "auto" }}
-                >
-                  <ul className={stylesForm.dropdownList}>
-                    {Periods.map((period) => (
-                      <li
-                        key={period.id}
-                        onClick={() => handleOptionSelectPeriod(period.id)}
-                      >
-                        <div>
-                          <p className="textContent">{period.period}</p>
-                        </div>
-
-                        {selectedOptionPeriod === period.period && (
-                          <img src={Icons.checkIcon} alt="Check Icon" />
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
           </div>
         </div>
-      </div>
+      </MediaQuery>
+
+      <MediaQuery maxWidth={375}>
+        <div className={stylesForm.formContainer}>
+          <div className={stylesForm.form}>
+            <p className="textDark">Chọn giờ</p>
+
+            <div className={stylesForm.dropdownsContainer}>
+              <div
+                className={stylesForm.dropdownContainer}
+                onClick={toggleDropdownTime}
+              >
+                <div
+                  className={stylesForm.dropdownHeaderContainer}
+                  style={isOpenTime ? { borderColor: "#7932ED" } : {}}
+                >
+                  <div className={stylesForm.dropdownHeader}>
+                    {selectedOptionTime ? (
+                      <div className={stylesForm.dropdownValue}>
+                        {selectedOptionTime}
+                      </div>
+                    ) : (
+                      "Giờ bắt đầu"
+                    )}
+                  </div>
+                  <img src={Icons.time} alt="Time Icon" />
+                </div>
+
+                {isOpenTime && (
+                  <div
+                    className={stylesForm.dropdownListContainer}
+                    style={{ maxHeight: 290, overflowY: "auto" }}
+                  >
+                    <ul className={stylesForm.dropdownList}>
+                      {Times.map((time) => (
+                        <li
+                          key={time.id}
+                          onClick={() => handleOptionSelectTime(time.id)}
+                          style={
+                            selectedOptionTime &&
+                            selectedOptionTime === time.time
+                              ? { background: "#F9FAFB" }
+                              : {}
+                          }
+                        >
+                          <div>
+                            <p className="textContent">{time.time}</p>
+                          </div>
+                          {selectedOptionTime === time.time && (
+                            <img src={Icons.checkIcon} alt="Check Icon" />
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div
+                className={stylesForm.dropdownContainer}
+                onClick={toggleDropdownPeriod}
+              >
+                <div
+                  className={stylesForm.dropdownHeaderContainer}
+                  style={isOpenPeriod ? { borderColor: "#7932ED" } : {}}
+                >
+                  <div className={stylesForm.dropdownHeader}>
+                    {selectedOptionPeriod ? (
+                      <div className={stylesForm.dropdownValue}>
+                        {selectedOptionPeriod}
+                      </div>
+                    ) : (
+                      "Thời gian"
+                    )}
+                  </div>
+                  <img
+                    src={isOpenPeriod ? Icons.arrowUp : Icons.arrowDown}
+                    alt="Dropdown Arrow"
+                  />
+                </div>
+
+                {isOpenPeriod && (
+                  <div
+                    className={stylesForm.dropdownListContainer}
+                    style={{ maxHeight: 290, overflowY: "auto" }}
+                  >
+                    <ul className={stylesForm.dropdownList}>
+                      {Periods.map((period) => (
+                        <li
+                          key={period.id}
+                          onClick={() => handleOptionSelectPeriod(period.id)}
+                          style={
+                            selectedOptionPeriod &&
+                            selectedOptionPeriod === period.period
+                              ? { background: "#F9FAFB" }
+                              : {}
+                          }
+                        >
+                          <div>
+                            <p className="textContent">{period.period}</p>
+                          </div>
+
+                          {selectedOptionPeriod === period.period && (
+                            <img src={Icons.checkIcon} alt="Check Icon" />
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </MediaQuery>
     </GlobalStyles>
   );
 };
